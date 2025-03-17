@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: "Audiowide", serif;
+        }
+
+        #fakedog {
+            height: 100px;
+            width: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="quote-box">
+        <img id="fakedog" src="" alt="" height="100" width="100" onclick="fakeDog(fakeDogs)">
+        <h2>Quote of the Day</h2>
+        <blockquote id="quote">Loading...</blockquote>
+        <span id="author">Loading</span>
+        <div>
+            <button onclick="getQuote(apiUrl)">New Quote</button>
+            <button><i class="fa-brands fa-x-twitter"></i> &nbsp; Tweet</button>
+            <button><i class="fa-brands fa-square-facebook"></i> &nbsp; FaceBook</button>
+            <button><i class="fa-brands fa-instagram"></i> &nbsp; Instagram</button>
+        </div>
+    </div>
+    <script>
+        const quote = document.getElementById('quote');
+        const author = document.getElementById('author');
+
+        let apiUrl = "https://dummyjson.com/quotes";
+
+        async function getQuote(url) {
+            const randomId = Math.floor(Math.random() * 30);
+            // console.log(randomId)
+            const res = await fetch(url);
+            var data = await res.json();
+            const q = data.quotes[randomId].quote;
+            const a = data.quotes[randomId].author;
+            quote.innerHTML = q;
+            author.innerHTML = a;
+        };
+
+        let fakeDogs = "https://dog.ceo/api/breeds/image/random";
+        let dog = document.getElementById('fakedog')
+        async function fakeDog(url) {
+            let res = await fetch(url)
+            let dogs = await res.json();
+            dog.src = dogs.message;
+        };
+        fakeDog(fakeDogs);
+    </script>
+</body>
+
+</html>

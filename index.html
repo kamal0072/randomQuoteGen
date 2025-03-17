@@ -32,7 +32,7 @@
             <button onclick="getQuote(apiUrl)">New Quote</button>
             <button><i class="fa-brands fa-x-twitter"></i> &nbsp; Tweet</button>
             <button><i class="fa-brands fa-square-facebook"></i> &nbsp; FaceBook</button>
-            <button><i class="fa-brands fa-instagram"></i> &nbsp; Instagram</button>
+            <button onclick="fakeDog(fakeDogs)"><i class="fa-brands fa-instagram"></i> &nbsp; Change Dog</button>
         </div>
     </div>
     <script>
@@ -59,7 +59,6 @@
             let dogs = await res.json();
             dog.src = dogs.message;
         };
-        fakeDog(fakeDogs);
     </script>
 </body>
 

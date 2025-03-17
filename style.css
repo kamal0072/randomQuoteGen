@@ -91,3 +91,9 @@ body{
     color: rgb(3, 22, 22);
     font-size: 20px;
 }
+
+#quote{
+    height: 150px;
+    width: 100%;
+    overflow: scroll;
+}
